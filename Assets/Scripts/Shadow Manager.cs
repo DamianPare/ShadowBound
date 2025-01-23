@@ -28,13 +28,13 @@ public class ShadowManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && selectedShadow != null)
         {
-            ShadowMove();
+            ShadowMove(selectedShadow);
         }
     }
 
-    void ShadowMove()
+    void ShadowMove(GameObject shadow)
     {
-        player.transform.position = selectedShadow.transform.position;
-        selectedShadow = null;
+        player.transform.position = shadow.GetComponent<Shadow>().FindCenter() + new Vector3(0,0.7f,0);
+        selectedShadow = null;    
     }
 }

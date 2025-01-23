@@ -27,7 +27,7 @@ public class InteractiveShadows : MonoBehaviour
 
     [SerializeField][Range(0.02f, 1f)] private float shadowColliderUpdateTime = 0.08f;
 
-    private Vector3 shadowCenter;
+    public Vector3 shadowCenter;
 
     private void Awake()
     {
@@ -43,6 +43,7 @@ public class InteractiveShadows : MonoBehaviour
     private void Update()
     {
         shadowTransform.position = transform.position;
+        shadowObject.transform.position = shadowCenter;
     }
 
     private void FixedUpdate()

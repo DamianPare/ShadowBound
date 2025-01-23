@@ -13,15 +13,20 @@ public class PlayerControl : MonoBehaviour
     private Vector2 LastSpeed = Vector2.zero;
     [SerializeField]
     private Vector3 MovementVelocity = Vector3.zero;
+    [SerializeField]
+    private float gracePeriod = 1f;
 
     public Vector3 boxSize;
     public float castDistance;
     public LayerMask shadowMask;
 
     private Rigidbody RigidBody;
+    private Vector3 lastLocation;
+    private float gracePeriodTimer;
     // Start is called before the first frame update
     void Start()
     {
+        gracePeriodTimer = Time.time;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         RigidBody = GetComponent<Rigidbody>();
@@ -30,12 +35,13 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsGrounded())
-        {
-            UpdateVelocity();
-        }
-        
+        UpdateVelocity();
         UpdateRotation();
+    }
+
+    void Freeze()
+    {
+        
     }
 
     void UpdateRotation()
@@ -52,8 +58,6 @@ public class PlayerControl : MonoBehaviour
         float yKeyboardInput = Input.GetAxis("Vertical");
 
         Vector3 CurrentVelocity = RigidBody.GetRelativePointVelocity(Vector3.zero);
-
-
         float DesiredSpeed_y = xKeyboardInput * MaximumSpeed;
         float DesiredSpeed_x = yKeyboardInput * MaximumSpeed;
 
@@ -65,18 +69,34 @@ public class PlayerControl : MonoBehaviour
 
         MovementVelocity = GetComponent<Transform>().forward * Speed_x;
         MovementVelocity += GetComponent<Transform>().right * Speed_y;
-        RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
+
+
+        if (IsGrounded())
+        {
+            gracePeriodTimer = Time.time;
+            RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
+            if (RigidBody.velocity.magnitude < 1 && lastLocation != transform.position)
+            {
+                lastLocation = transform.position;
+            }
+        }
+
+        else if (Time.time - gracePeriodTimer > gracePeriod)
+        {
+            RigidBody.velocity = Vector3.zero;
+            transform.position = lastLocation;
+        }
     }
 
     public bool IsGrounded()
     {
         if (Physics.BoxCast(transform.position, boxSize, -transform.up, Quaternion.identity, castDistance, shadowMask))
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
 
