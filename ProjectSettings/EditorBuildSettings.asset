@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Code Gym.unity
-    guid: 6ba1548bcd592e54a8b5e940d77e4fab
+    path: Assets/Scenes/Level1.unity
+    guid: ac2cd9f94ef97d74eb1e4437323ae5b2
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 51efc28b850d0c04e9ba24f69cf07504
   m_configObjects: {}
