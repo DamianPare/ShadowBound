@@ -50,3 +50,4 @@ public class ShadowManager : MonoBehaviour
         player.transform.position = selectedSpot;
     }
 }
+ 

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5985def8384a9fa44a4bb13bcfc8ac07, type: 3}
   m_Name: SmallOrb
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 0}
-  _itemSprite: {fileID: 0}
-  _typeOfItem: 0
-  _itemName: 
+  _itemPrefab: {fileID: 1367266458097495292, guid: 37e0941f92da2f74fbafc1bcfd785978,
+    type: 3}
+  _typeOfItem: 1
   _timeBeforeConsume: 0
   _isSingleUse: 0
   _reuseCooldown: 0
-  _isProjectile: 0
-  _speed: 0
+  _isProjectile: 1
+  _speed: 100
   _hpModifier: 0
-  _canRicochet: 0
