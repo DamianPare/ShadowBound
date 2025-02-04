@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
