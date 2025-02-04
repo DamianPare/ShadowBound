@@ -23,9 +23,25 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody RigidBody;
     private Vector3 lastLocation;
     private float gracePeriodTimer;
-    // Start is called before the first frame update
+
+    [SerializeField] private float timeToMove;
+    [SerializeField] private float distanceToMove;
+
+    public bool isTeleporting;
+
+    public static PlayerControl instance;
+
+    public bool levelCompleted;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked; // locks cursor
+        Cursor.visible = false; // sets cursor invisible
         gracePeriodTimer = Time.time;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -36,12 +52,16 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         UpdateVelocity();
-        UpdateRotation();
+        //UpdateRotation()
     }
 
-    void Freeze()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.layer == 10)
+        {
+            GameManager.instance.LevelCompleted = true;
+            Debug.Log("Level Completed");
+        }
     }
 
     void UpdateRotation()
@@ -81,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        else if (Time.time - gracePeriodTimer > gracePeriod)
+        else if (Time.time - gracePeriodTimer > gracePeriod && !isTeleporting)
         {
             RigidBody.velocity = Vector3.zero;
             transform.position = lastLocation;
