@@ -69,14 +69,10 @@ public class ShadowManager : MonoBehaviour
         DG.Tweening.Sequence mySequence = DOTween.Sequence();
 
         mySequence.Append(player.transform.DOMove(player.transform.position + new Vector3(0, -2, 0), timeToMove));
-        mySequence.PrependInterval(1.5f);
-        mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -2, 0), timeToMove));
-        mySequence.PrependInterval(1.5f);
+        //mySequence.PrependInterval(1.5f);
+        mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -2, 0), 0));
+        //mySequence.PrependInterval(1.5f);
         mySequence.Append(player.transform.DOMove(destination, timeToMove));
-        //transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(0,-2,0)), timeToMove);
-        //transform.position = Vector3.Lerp(transform.position, (destination + new Vector3(0, -2, 0)), timeToMove);
-        //transform.position = Vector3.Lerp(transform.position, (transform.position + new Vector3(0, 2, 0)), timeToMove);
-        //mySequence.Play();
         isMoving = false;
         PlayerControl.instance.isTeleporting = false;
 

@@ -49,7 +49,6 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         UpdateVelocity();
-        //UpdateRotation()
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,14 +58,6 @@ public class PlayerControl : MonoBehaviour
             GameManager.instance.LevelCompleted = true;
             Debug.Log("Level Completed");
         }
-    }
-
-    void UpdateRotation()
-    {
-        float DesiredYaw = RotationToFollow.transform.rotation.eulerAngles.y;
-        Vector3 EularAngles = transform.rotation.eulerAngles;
-        EularAngles.y = DesiredYaw;
-        transform.rotation = Quaternion.Euler(EularAngles);
     }
 
     void UpdateVelocity()
