@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4084758474473225208}
   - component: {fileID: 4821070036804079251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2896087233442151769}
   - component: {fileID: 1664372897595329786}
   - component: {fileID: 2978432815129395867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumSpeed: 6
   RotationToFollow: {fileID: 0}
-  Momentum: 0.75
+  Momentum: 0
   LastSpeed: {x: 0, y: 0}
   MovementVelocity: {x: 0, y: 0, z: 0}
   gracePeriod: 0.5
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628142684093327025}
   - component: {fileID: 7252539436563068794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,13 +249,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2656124998871408513}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0043792846, y: -0, z: -0, w: 0.9999904}
-  m_LocalPosition: {x: 0, y: 0.49000004, z: -0.2060003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5127265621433509939}
-  m_LocalEulerAnglesHint: {x: -0.502, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7252539436563068794
 MonoBehaviour:
   m_ObjectHideFlags: 0

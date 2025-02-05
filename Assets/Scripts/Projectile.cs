@@ -31,6 +31,6 @@ public class Projectile : ItemBase
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        gameObject.SetActive(false);
     }
 }

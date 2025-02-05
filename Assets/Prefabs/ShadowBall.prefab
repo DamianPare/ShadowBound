@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5668596980685736851}
   - component: {fileID: 4312077002812438952}
   - component: {fileID: 1567282791830021853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 6421434566568505751}
   - component: {fileID: 1367266458097495292}
   - component: {fileID: 5276010882970243336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShadowBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptedObjectData: {fileID: 11400000, guid: 1dbccd2677369c649bc3fd5c9584a938,
     type: 2}
-  speed: 500
   rb: {fileID: 5276010882970243336}
 --- !u!54 &5276010882970243336
 Rigidbody:
@@ -237,7 +236,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9055516581452085899}
   serializedVersion: 4
-  m_Mass: 0.5
+  m_Mass: 0.0001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

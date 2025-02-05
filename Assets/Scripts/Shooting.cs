@@ -76,4 +76,9 @@ public class Shooting : MonoBehaviour
     {
         _poolManager = main;
     }
+
+    public void ReturnObject(ItemBase item)
+    {
+        _poolManager.RemoveItem(item);
+    }
 }
