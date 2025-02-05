@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine.Utility;
 
 public class ObjectMover : MonoBehaviour
 {
@@ -9,23 +10,31 @@ public class ObjectMover : MonoBehaviour
     [SerializeField] private Vector3 distanceToMove;
     [SerializeField] private float timeToMove;
 
-    private Transform startPos;
+    private Vector3 startPos;
 
     private void Awake()
     {
-        startPos = transform;
+        startPos = objectToMove.transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 9)
         {
-            moveObject();
+            MoveObject();
         }
     }
 
-    void moveObject()
+    void MoveObject()
     {
-        objectToMove.transform.DOMove(objectToMove.transform.position + distanceToMove, timeToMove);
+        if (objectToMove.transform.position == startPos)
+        {
+            objectToMove.transform.DOMove(objectToMove.transform.position + distanceToMove, timeToMove);
+        }
+
+        else
+        {
+            objectToMove.transform.DOMove(startPos, timeToMove);
+        }
     }
 }
