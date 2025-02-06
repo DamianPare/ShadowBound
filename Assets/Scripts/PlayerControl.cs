@@ -81,8 +81,10 @@ public class PlayerControl : MonoBehaviour
 
         if (IsGrounded())
         {
+            RigidBody.drag = 5f;
             gracePeriodTimer = Time.time;
             RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
+
             if (RigidBody.velocity.magnitude < 1 && lastLocation != transform.position)
             {
                 lastLocation = transform.position;
@@ -91,7 +93,7 @@ public class PlayerControl : MonoBehaviour
 
         else if (Time.time - gracePeriodTimer > gracePeriod && !isTeleporting)
         {
-            RigidBody.velocity = Vector3.zero;
+            RigidBody.drag = 20f;
             transform.position = lastLocation;
         }
     }
