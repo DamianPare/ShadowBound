@@ -14,6 +14,8 @@ public class ShadowManager : MonoBehaviour
 
     [SerializeField] private float timeToMove;
     [SerializeField] private float distanceToMove;
+    [SerializeField] private GameObject crosshairSmall;
+    [SerializeField] private GameObject crosshairBig;
 
     private void Update()
     {
@@ -25,8 +27,9 @@ public class ShadowManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, shadowMask))
-
         {
+            crosshairBig.SetActive(false);
+            crosshairSmall.SetActive(true);
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -34,6 +37,12 @@ public class ShadowManager : MonoBehaviour
                 selectedShadow = hitInfo.transform.gameObject;
                 Debug.Log(selectedShadow.name);
             }
+        }
+
+        else
+        {
+            crosshairBig.SetActive(true);
+            crosshairSmall.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.LeftShift) && selectedShadow != null)

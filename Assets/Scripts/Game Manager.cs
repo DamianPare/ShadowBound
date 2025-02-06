@@ -16,21 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string Level2Name;
     [SerializeField] private string Level3Name;
 
-    [SerializeField] private GameObject completedScreen;
+    [SerializeField] private GameObject PauseScreen;
+    [SerializeField] private GameObject ControlScreen;
     [SerializeField] private Image Bar;
 
-    [SerializeField] private GameObject lostScreen;
-
-    private float timeElapsed;
-    private float Edibility;
-    private int startEdibility;
-
     public bool LevelCompleted;
-    public bool LevelFailed;
-
-    private Color32 resultColor;
-    private Color32 milkColor;
-    private SpriteRenderer milkRenderer;
+    public bool isPaused;
 
     private void Awake()
     {
@@ -41,11 +32,21 @@ public class GameManager : MonoBehaviour
     {
         SetUp();
         LevelCompleted = false;
-        LevelFailed = false;
+        isPaused = false;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            isPaused = true;
+        }   
+        
+        if (isPaused)
+        {
+            Pause();
+        }
+
         if (LevelCompleted)
         {
             NextLevel();
@@ -74,16 +75,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(Level1Name);
     }
 
-    public void LevelFinished()
-    {
-        LevelCompleted = true;
-        completedScreen.SetActive(true);
-    }
-
     private void EndGame()
     {
-        lostScreen.SetActive(true);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Scene scene = SceneManager.GetActiveScene();
@@ -95,5 +88,38 @@ public class GameManager : MonoBehaviour
     {
         _poolManager.InitializePool();
         Shooting.instance.SetUp(_poolManager);
+    }
+
+    public void Pause()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        PauseScreen.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        PauseScreen.SetActive(false);
+    }
+
+    public void ControlsON()
+    {
+        ControlScreen.SetActive(true);
+        PauseScreen.SetActive(false);
+    }
+    public void ControlsOFF()
+    {
+        ControlScreen.SetActive(false);
+        PauseScreen.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
