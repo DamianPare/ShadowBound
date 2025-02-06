@@ -266,6 +266,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &139963671262138031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4016441296814746424}
+  m_Layer: 0
+  m_Name: Poool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4016441296814746424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139963671262138031}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.589239, y: 2.5999386, z: -9.994247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2306745644632939660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510560478633186007
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 606077535703597731}
   serializedVersion: 2
   m_LocalRotation: {x: 0.075888805, y: -0.8851417, z: 0.43195152, w: 0.15550898}
-  m_LocalPosition: {x: -8.903999, y: 1.491, z: 3.9400003}
+  m_LocalPosition: {x: -8.92, y: 1.901, z: 3.9311419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -546,10 +577,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.5, y: -0.4, z: 0}
+  ShoulderOffset: {x: 0.5, y: 0.01, z: 0}
   VerticalArmLength: 1.32
-  CameraSide: 0.496
-  CameraDistance: 5
+  CameraSide: 0.48
+  CameraDistance: 4.3
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -867,6 +898,7 @@ Transform:
   - {fileID: 353547208526762941}
   - {fileID: 3133387278646126829}
   - {fileID: 375613687746003827}
+  - {fileID: 4016441296814746424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3768939185846291944
@@ -1586,7 +1618,7 @@ Transform:
   m_GameObject: {fileID: 8073257970155056996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.903999, y: 1.491, z: 3.9400003}
+  m_LocalPosition: {x: -8.92, y: 1.901, z: 3.9311419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1779,6 +1811,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 0}
+  isMoving: 0
   timeToMove: 1
   distanceToMove: 0
   crosshairSmall: {fileID: 6354480692981621693}
@@ -1795,7 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94251c90d301cd54b988333d6d01ee93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolsGrp: {fileID: 0}
+  _poolsGrp: {fileID: 139963671262138031}
   _itemsData: {fileID: 11400000, guid: 111be5ce4d719ce409114aa8dca9cc9e, type: 2}
 --- !u!114 &6198297642612685436
 MonoBehaviour:

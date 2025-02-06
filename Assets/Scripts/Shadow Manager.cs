@@ -9,13 +9,19 @@ public class ShadowManager : MonoBehaviour
     private Vector3 selectedSpot;
     public LayerMask shadowMask;
     public GameObject player;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Vector3 destination;
+    public static ShadowManager instance;
 
     [SerializeField] private float timeToMove;
     [SerializeField] private float distanceToMove;
     [SerializeField] private GameObject crosshairSmall;
     [SerializeField] private GameObject crosshairBig;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -69,13 +75,12 @@ public class ShadowManager : MonoBehaviour
         mySequence.Append(player.transform.DOMove(player.transform.position + new Vector3(0, -2, 0), timeToMove));
         mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -2, 0), 0.5f));
         mySequence.Append(player.transform.DOMove(destination, timeToMove));
-        isMoving = false;
-        PlayerControl.instance.isTeleporting = false;
+        mySequence.OnComplete(SetBool);
+    }
 
-        if (transform.position == destination)
-        {
-            isMoving = false;
-        }
+    void SetBool()
+    {
+        isMoving = false;
     }
 }
  
