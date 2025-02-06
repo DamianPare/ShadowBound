@@ -119,5 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 0}
-  distanceToMove: {x: -5, y: 0, z: 0}
+  usableMaterial: {fileID: 2100000, guid: efa4b1e39466307438009ac1e6fe9218, type: 2}
+  unusableMaterial: {fileID: 2100000, guid: 61b3bb9dffefb624fa8e2c91f0efe1fd, type: 2}
+  moveObject: 1
+  distanceToMove: {x: 5, y: 0, z: 0}
+  rotateObject: 0
+  angleToRotate: {x: 0, y: 0, z: 0, w: 0}
   timeToMove: 1

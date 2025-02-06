@@ -39,7 +39,7 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Fire();
         }
@@ -63,7 +63,6 @@ public class Shooting : MonoBehaviour
         var rbi = i.GetComponent<Rigidbody>();
         rbi.velocity = Spawnpoint.transform.forward * _launchForce;
         StartCoroutine(FireCooldown());
-        //AudioManager.PlaySound(TypeOfSound.Cannon);
     }
 
     IEnumerator FireCooldown()
