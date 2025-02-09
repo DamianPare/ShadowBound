@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Box (6)
+  m_Name: Wall 1
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 91fb0d29b2f6ca94180fad424384ba2d, type: 2}
+  m_Parent: {fileID: 2100000, guid: 2f7474fca0843f644b5f5c93d4848872, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,18 +25,18 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7f679bd66b203d148af6de89982c64c2, type: 3}
-        m_Scale: {x: 3.9, y: 2.97}
-        m_Offset: {x: 4.22, y: -0.18}
+        m_Texture: {fileID: 2800000, guid: 407eb331db5e10b44b300eb4cb90fae5, type: 3}
+        m_Scale: {x: 0.05, y: -0.08}
+        m_Offset: {x: -0.02, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 3.9, y: 2.97}
-        m_Offset: {x: 4.22, y: -0.18}
+        m_Texture: {fileID: 2800000, guid: 407eb331db5e10b44b300eb4cb90fae5, type: 3}
+        m_Scale: {x: 0.05, y: -0.08}
+        m_Offset: {x: -0.02, y: 0}
     m_Ints: []
     m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &1350205841872014820
+--- !u!114 &1424817055723534481
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
