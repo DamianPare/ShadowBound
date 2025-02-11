@@ -1746,6 +1746,21 @@ PrefabInstance:
       propertyPath: objectToMove
       value: 
       objectReference: {fileID: 474344966}
+    - target: {fileID: 3482125482100855375, guid: b58574d2ee71e034181a0db35d57f99d,
+        type: 3}
+      propertyPath: rotateObject
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482125482100855375, guid: b58574d2ee71e034181a0db35d57f99d,
+        type: 3}
+      propertyPath: angleToRotate.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482125482100855375, guid: b58574d2ee71e034181a0db35d57f99d,
+        type: 3}
+      propertyPath: angleToRotate.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
