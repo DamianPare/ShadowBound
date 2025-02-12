@@ -48,6 +48,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(gracePeriodTimer);
         UpdateVelocity();
     }
 
@@ -78,6 +79,8 @@ public class PlayerControl : MonoBehaviour
         MovementVelocity = GetComponent<Transform>().forward * Speed_x;
         MovementVelocity += GetComponent<Transform>().right * Speed_y;
 
+        if (isTeleporting)
+            gracePeriodTimer = Time.time;
 
         if (IsGrounded())
         {
@@ -85,7 +88,7 @@ public class PlayerControl : MonoBehaviour
             gracePeriodTimer = Time.time;
             RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
 
-            if (RigidBody.velocity.magnitude < 1 && lastLocation != transform.position)
+            if (RigidBody.velocity.magnitude < 1 && lastLocation != transform.position && !isTeleporting)
             {
                 lastLocation = transform.position;
             }
@@ -93,6 +96,7 @@ public class PlayerControl : MonoBehaviour
 
         else if (Time.time - gracePeriodTimer > gracePeriod && !isTeleporting)
         {
+            Debug.Log("AAHHHH IT BURNS MY FLESH IS MELTING OFF");
             RigidBody.drag = 20f;
             transform.position = lastLocation;
         }

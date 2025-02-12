@@ -27,7 +27,7 @@ public class CameraMovement : MonoBehaviour
     {
 
         //targetPosition.position = transform.position;   
-        Debug.Log(lastLocation);
+        //Debug.Log(lastLocation);
         if (ShadowManager.instance.isMoving)
         {
             //vcam.m_Follow.position = lastLocation;

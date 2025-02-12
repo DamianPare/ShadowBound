@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform _spawnpoint;
     [SerializeField] private ItemData _defaultProjectile;
     [SerializeField] private float _launchForce;
+    [SerializeField] private float fireRate;
 
     public static Shooting instance;
 
@@ -22,6 +23,8 @@ public class Shooting : MonoBehaviour
     private bool _isFiring = false;
     public bool _hasPowerUp { get; private set; }
     public PoolManager _poolManager { get; private set; }
+
+    private float nextFire;
 
 
     // Start is called before the first frame update
@@ -37,8 +40,10 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && GameManager.instance.isPaused == false && Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             Fire();
         }
     }
@@ -56,7 +61,7 @@ public class Shooting : MonoBehaviour
 
     private void Fire()
     {
-        //AudioManager.instance.PlaySound(TypeOfSound.Shoot, 1);
+        AudioManager.instance.PlaySound(TypeOfSound.Shoot, 1);
         _isFiring = true;
         var i = _poolManager.GetItem(_currentProjectil, this);
         var rbi = i.GetComponent<Rigidbody>();

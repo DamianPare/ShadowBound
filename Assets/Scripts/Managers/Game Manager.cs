@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ShadowManager _shadowManager;
     public static GameManager instance;
 
+    [SerializeField] private string MainMenuName;
     [SerializeField] private string Level1Name;
     [SerializeField] private string Level2Name;
     [SerializeField] private string Level3Name;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ControlScreen;
 
     public bool LevelCompleted;
-    private bool isPaused;
+    public bool isPaused;
 
     public Animator transition;
 
@@ -65,7 +66,10 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-
+        if (SceneManager.GetActiveScene().name == MainMenuName)
+        {
+            StartCoroutine(LoadLevel(Level1Name));
+        }
         if (SceneManager.GetActiveScene().name == Level1Name)
         {
             StartCoroutine(LoadLevel(Level2Name));
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         isPaused = false;
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -119,17 +124,20 @@ public class GameManager : MonoBehaviour
 
     public void ControlsON()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         ControlScreen.SetActive(true);
         PauseScreen.SetActive(false);
     }
     public void ControlsOFF()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         ControlScreen.SetActive(false);
         PauseScreen.SetActive(true);
     }
 
     public void Quit()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         SceneManager.LoadScene("Main Menu");
     }
 }

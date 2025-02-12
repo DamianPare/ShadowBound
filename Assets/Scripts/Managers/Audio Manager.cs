@@ -3,11 +3,12 @@ using UnityEngine;
 public enum TypeOfSound
 {
     Music,
-    Teleport,
     UIButton,
+    Shoot,
+    Shoot_Hit,
     Button,
     Light,
-    Shoot,
+    Teleport,
 }
 
 [RequireComponent(typeof(AudioSource))]

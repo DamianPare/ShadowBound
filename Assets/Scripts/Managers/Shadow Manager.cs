@@ -1,7 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
-
+using System;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ShadowManager : MonoBehaviour
 {
@@ -15,14 +17,24 @@ public class ShadowManager : MonoBehaviour
 
     [SerializeField] private float timeToMove;
     [SerializeField] private float distanceToMove;
+    [SerializeField] private float range;
     [SerializeField] private GameObject crosshairSmall;
     [SerializeField] private GameObject crosshairBig;
+    private GameObject charSprite;
+    private Animator characterAnim;
+    private SpriteRenderer charRenderer;
 
     private void Awake()
     {
+        charSprite = GameObject.Find("Sprite");
         instance = this;
     }
 
+    private void Start()
+    {
+        charRenderer = charSprite.GetComponent<SpriteRenderer>();
+        characterAnim = charSprite.GetComponent<Animator>();
+    }
     private void Update()
     {
 
@@ -64,23 +76,44 @@ public class ShadowManager : MonoBehaviour
         destination = spot + new Vector3(0, 0.65f, 0);
         isMoving = true;
 
-        ShadowMove();
+        StartCoroutine(ShadowMove());
     }
 
-    void ShadowMove()
+    IEnumerator ShadowMove()
     {
+        characterAnim.SetBool("isTeleporting", true);
         PlayerControl.instance.isTeleporting = true;
-        DG.Tweening.Sequence mySequence = DOTween.Sequence();
 
-        mySequence.Append(player.transform.DOMove(player.transform.position + new Vector3(0, -2, 0), timeToMove));
-        mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -2, 0), 0.5f));
-        mySequence.Append(player.transform.DOMove(destination, timeToMove));
+        yield return new WaitForSeconds(1);
+
+        DG.Tweening.Sequence mySequence = DOTween.Sequence();
+        charRenderer.enabled = false;
+        //mySequence.Append(player.transform.DOMove(player.transform.position + new Vector3(0, -2, 0), timeToMove));
+        //mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -2, 0), 0.5f));
+        mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -0.2f, 0), timeToMove).SetEase(Ease.Linear));
         mySequence.OnComplete(SetBool);
+
+        yield return new WaitForSeconds(1);
+
+        PlayerControl.instance.isTeleporting = false;
+    }
+
+    IEnumerator Delay()
+    {
+        characterAnim.SetBool("isTeleporting", true);
+        PlayerControl.instance.isTeleporting = true;
+
+        yield return new WaitForSeconds(1);
+
+        ShadowMove();
     }
 
     void SetBool()
     {
+        charRenderer.enabled = true;
+        characterAnim.SetBool("isTeleporting", false);
         isMoving = false;
+        //PlayerControl.instance.isTeleporting = false;
     }
 }
  

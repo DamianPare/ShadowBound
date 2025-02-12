@@ -1516,6 +1516,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &1642421436 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1396309871378634002, guid: 0194dbba9a6e6af4eb1125765fd76487,
+    type: 3}
+  m_PrefabInstance: {fileID: 2649999583866698025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658418942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,6 +2176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BTS
       objectReference: {fileID: 0}
+    - target: {fileID: 6346352978062170049, guid: 829e31b8dbf45bc4c8763196c86a697b,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6808162020338074175, guid: 829e31b8dbf45bc4c8763196c86a697b,
         type: 3}
       propertyPath: m_Follow
@@ -2180,6 +2191,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4083178418209955508}
+    - target: {fileID: 7233748892600956212, guid: 829e31b8dbf45bc4c8763196c86a697b,
+        type: 3}
+      propertyPath: characterAnim
+      value: 
+      objectReference: {fileID: 1642421436}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

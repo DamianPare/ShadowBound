@@ -19,21 +19,25 @@ public class MainMenu : MonoBehaviour
 
     public void ControlScreenON()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         controlScreen.SetActive(true);
     }
 
     public void ControlScreenOFF()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         controlScreen.SetActive(false);
     }
 
     public void PlayGame()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         Application.Quit();
     }
 }
