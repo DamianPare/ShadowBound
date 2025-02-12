@@ -5845,6 +5845,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 4084758474473225208, guid: 0194dbba9a6e6af4eb1125765fd76487,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.096
+      objectReference: {fileID: 0}
     - target: {fileID: 5127265621433509939, guid: 0194dbba9a6e6af4eb1125765fd76487,
         type: 3}
       propertyPath: m_LocalPosition.x
