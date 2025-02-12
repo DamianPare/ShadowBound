@@ -5898,7 +5898,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 22887745123613186, guid: 0194dbba9a6e6af4eb1125765fd76487,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1855952139}
+    - targetCorrespondingSourceObject: {fileID: 22887745123613186, guid: 0194dbba9a6e6af4eb1125765fd76487,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1855952140}
   m_SourcePrefab: {fileID: 100100000, guid: 0194dbba9a6e6af4eb1125765fd76487, type: 3}
 --- !u!1001 &630984528
 PrefabInstance:
@@ -31194,6 +31202,48 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1855952136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 22887745123613186, guid: 0194dbba9a6e6af4eb1125765fd76487,
+    type: 3}
+  m_PrefabInstance: {fileID: 620345583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1855952139
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855952136}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e65011bbb12215a42b330a77ae5f3f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &1855952140
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855952136}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 157255102784f39488c5166dddc1f94a, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!43 &1860350353
 Mesh:
   m_ObjectHideFlags: 0
