@@ -32,14 +32,19 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SetUp();
+        Time.timeScale = 1.0f;
         LevelCompleted = false;
         isPaused = false;
+
+        if (SceneManager.GetActiveScene().name != MainMenuName)
+        {
+            SetUp();
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name != MainMenuName)
         {
             isPaused = true;
         }   
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == MainMenuName)
         {
+            AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
             StartCoroutine(LoadLevel(Level1Name));
         }
         if (SceneManager.GetActiveScene().name == Level1Name)
@@ -86,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     private void GameCompleted()
     {
-        SceneManager.LoadScene(Level1Name);
+        SceneManager.LoadScene(MainMenuName);
     }
 
     private void EndGame()
@@ -138,6 +144,6 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
-        SceneManager.LoadScene("Main Menu");
+        StartCoroutine(LoadLevel(MainMenuName));
     }
 }

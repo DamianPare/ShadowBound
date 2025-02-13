@@ -21,12 +21,26 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        //https://www.youtube.com/watch?v=xswEpNpucZQ
     }
+
+
 
     private void Start()
     {
         _source = GetComponent<AudioSource>();
+        PlaySound(TypeOfSound.Music, 1f);
     }
 
     public void PlaySound(TypeOfSound sound, float volume = 1)

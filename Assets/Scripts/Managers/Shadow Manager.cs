@@ -20,6 +20,7 @@ public class ShadowManager : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private GameObject crosshairSmall;
     [SerializeField] private GameObject crosshairBig;
+    [SerializeField] private GameObject crosshairBigRED;
     private GameObject charSprite;
     private Animator characterAnim;
     private SpriteRenderer charRenderer;
@@ -40,24 +41,37 @@ public class ShadowManager : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, shadowMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 10))
         {
-            crosshairBig.SetActive(false);
-            crosshairSmall.SetActive(true);
 
-            if (Input.GetMouseButtonDown(1) && !isMoving)
+            if (hitInfo.transform.gameObject.layer == 6)
             {
-                selectedSpot = hitInfo.point;
-                selectedShadow = hitInfo.transform.gameObject;
-                Debug.Log(selectedShadow.name);
-                MoveToSpot();
+                crosshairBigRED.SetActive(false);
+                crosshairBig.SetActive(false);
+                crosshairSmall.SetActive(true);
+
+                if (Input.GetMouseButtonDown(1) && !isMoving)
+                {
+                    selectedSpot = hitInfo.point;
+                    selectedShadow = hitInfo.transform.gameObject;
+                    Debug.Log(selectedShadow.name);
+                    MoveToSpot();
+                }
+            }
+
+            if (hitInfo.transform.gameObject.layer != 6)
+            {
+                crosshairBigRED.SetActive(false);
+                crosshairBig.SetActive(true);
+                crosshairSmall.SetActive(false);
             }
         }
 
         else
         {
-            crosshairBig.SetActive(true);
             crosshairSmall.SetActive(false);
+            crosshairBig.SetActive(false);
+            crosshairBigRED.SetActive(true);
         }
     }
 
