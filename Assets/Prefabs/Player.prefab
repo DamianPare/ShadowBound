@@ -193,7 +193,7 @@ MonoBehaviour:
   Momentum: 0
   LastSpeed: {x: 0, y: 0}
   MovementVelocity: {x: 0, y: 0, z: 0}
-  gracePeriod: 0.5
+  gracePeriod: 1
   boxSize: {x: 0.5, y: 0.1, z: 0.5}
   castDistance: 0.5
   shadowMask:

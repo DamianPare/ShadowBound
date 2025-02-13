@@ -41,7 +41,7 @@ public class ShadowManager : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 10))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 13))
         {
 
             if (hitInfo.transform.gameObject.layer == 6)

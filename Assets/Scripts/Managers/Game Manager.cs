@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name != MainMenuName)
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != MainMenuName || Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name != MainMenuName)
         {
             isPaused = true;
         }   
@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
+        isPaused = false;
+        Time.timeScale = 1f;
         AudioManager.instance.PlaySound(TypeOfSound.UIButton, 0.5f);
         StartCoroutine(LoadLevel(MainMenuName));
     }
