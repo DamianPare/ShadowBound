@@ -61,6 +61,7 @@ public class ObjectMover : MonoBehaviour
     {
         if (collision.gameObject.layer == 9 && !isMoving)
         {
+
             if (moveObject)
             {            
                 MoveObject();
@@ -75,6 +76,7 @@ public class ObjectMover : MonoBehaviour
 
     void MoveObject()
     {
+
         if (AtTarget())
         {
             objectToMove.transform.DOMove(startPos, timeToMove);
@@ -88,16 +90,15 @@ public class ObjectMover : MonoBehaviour
 
     void RotateObject()
     {
-        {
-            if (AtTarget())
-            {
-                objectToMove.transform.DORotate(startAngle, timeToMove);
-            }
 
-            if (AtSpawn())
-            {
-                objectToMove.transform.DORotate(objectToMove.transform.rotation * angleToRotate.eulerAngles, timeToMove);
-            }
+        if (AtTarget())
+        {
+            objectToMove.transform.DORotate(startAngle, timeToMove);
+        }
+
+        if (AtSpawn())
+        {
+            objectToMove.transform.DORotate(objectToMove.transform.rotation * angleToRotate.eulerAngles, timeToMove);
         }
     }
 

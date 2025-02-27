@@ -8,7 +8,8 @@ public enum TypeOfSound
     Shoot_Hit,
     Button,
     Light,
-    Teleport,
+    TeleportUP,
+    TeleportDOWN,
 }
 
 [RequireComponent(typeof(AudioSource))]
@@ -40,7 +41,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _source = GetComponent<AudioSource>();
-        PlaySound(TypeOfSound.Music, 1f);
+        PlaySound(TypeOfSound.Music, 0.25f);
     }
 
     public void PlaySound(TypeOfSound sound, float volume = 1)

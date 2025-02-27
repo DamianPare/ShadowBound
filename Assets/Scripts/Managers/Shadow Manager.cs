@@ -55,7 +55,7 @@ public class ShadowManager : MonoBehaviour
                     selectedSpot = hitInfo.point;
                     selectedShadow = hitInfo.transform.gameObject;
                     Debug.Log(selectedShadow.name);
-                    MoveToSpot();
+                    MoveToSpot(selectedSpot);
                 }
             }
 
@@ -84,10 +84,9 @@ public class ShadowManager : MonoBehaviour
     //    isMoving = true;
     //}
 
-    void MoveToSpot()
+    public void MoveToSpot(Vector3 point)
     {
-        Vector3 spot = selectedSpot;
-        destination = spot + new Vector3(0, 0.65f, 0);
+        destination = point + new Vector3(0, 0.65f, 0);
         isMoving = true;
 
         StartCoroutine(ShadowMove());
@@ -95,6 +94,7 @@ public class ShadowManager : MonoBehaviour
 
     IEnumerator ShadowMove()
     {
+        AudioManager.instance.PlaySound(TypeOfSound.TeleportDOWN, 0.25f);
         characterAnim.SetBool("isTeleporting", true);
         PlayerControl.instance.isTeleporting = true;
 
@@ -107,7 +107,9 @@ public class ShadowManager : MonoBehaviour
         mySequence.Append(player.transform.DOMove(destination + new Vector3(0, -0.2f, 0), timeToMove).SetEase(Ease.Linear));
         mySequence.OnComplete(SetBool);
 
+        
         yield return new WaitForSeconds(1);
+        AudioManager.instance.PlaySound(TypeOfSound.TeleportUP, 0.25f);
 
         PlayerControl.instance.isTeleporting = false;
     }

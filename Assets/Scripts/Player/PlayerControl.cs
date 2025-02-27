@@ -23,6 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private float timeToMove;
     [SerializeField] private float distanceToMove;
+    [SerializeField] private ParticleSystem melt;
 
     public bool isTeleporting;
 
@@ -80,10 +81,15 @@ public class PlayerControl : MonoBehaviour
         MovementVelocity += GetComponent<Transform>().right * Speed_y;
 
         if (isTeleporting)
+        {
             gracePeriodTimer = Time.time;
+            melt.Stop();
+        }
+
 
         if (IsGrounded())
         {
+            melt.Stop();
             RigidBody.drag = 5f;
             gracePeriodTimer = Time.time;
             RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
@@ -98,7 +104,14 @@ public class PlayerControl : MonoBehaviour
         {
             Debug.Log("AAHHHH IT BURNS MY FLESH IS MELTING OFF");
             RigidBody.drag = 20f;
-            transform.position = lastLocation;
+            Vector3 dest = new Vector3(lastLocation.x, (lastLocation.y - 0.5f), lastLocation.z);
+            ShadowManager.instance.MoveToSpot(dest);
+            //transform.position = lastLocation;
+        }
+
+        if (Time.time != gracePeriodTimer)
+        {
+            melt.Play();
         }
     }
 

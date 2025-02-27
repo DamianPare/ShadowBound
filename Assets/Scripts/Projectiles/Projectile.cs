@@ -31,6 +31,7 @@ public class Projectile : ItemBase
 
     private void OnCollisionEnter(Collision collision)
     {
+        AudioManager.instance.PlaySound(TypeOfSound.Shoot_Hit, 0.1f);
         gameObject.SetActive(false);
     }
 }
