@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody RigidBody;
     private Vector3 lastLocation;
+    private GameObject groundedObject;
     private float gracePeriodTimer;
 
     [SerializeField] private float timeToMove;
@@ -83,13 +84,11 @@ public class PlayerControl : MonoBehaviour
         if (isTeleporting)
         {
             gracePeriodTimer = Time.time;
-            melt.Stop();
         }
 
 
         if (IsGrounded())
         {
-            melt.Stop();
             RigidBody.drag = 5f;
             gracePeriodTimer = Time.time;
             RigidBody.velocity = new Vector3(MovementVelocity.x, RigidBody.velocity.y, MovementVelocity.z);
@@ -102,27 +101,47 @@ public class PlayerControl : MonoBehaviour
 
         else if (Time.time - gracePeriodTimer > gracePeriod && !isTeleporting)
         {
+            melt.Play();
             Debug.Log("AAHHHH IT BURNS MY FLESH IS MELTING OFF");
             RigidBody.drag = 20f;
-            Vector3 dest = new Vector3(lastLocation.x, (lastLocation.y - 0.5f), lastLocation.z);
-            ShadowManager.instance.MoveToSpot(dest);
-            //transform.position = lastLocation;
+
+            if (groundedObject.transform.hasChanged)
+            {
+                Debug.Log("GET FUCKED PUSSY BOY, I DID IT");
+                ShadowManager.instance.MoveToCenter(groundedObject);
+                groundedObject.transform.hasChanged = false;
+            }
+
+            else
+            {
+                Vector3 dest = new Vector3(lastLocation.x, (lastLocation.y - 0.5f), lastLocation.z);
+                ShadowManager.instance.MoveToSpot(dest);
+            }
         }
 
-        if (Time.time != gracePeriodTimer)
-        {
-            melt.Play();
-        }
+
     }
 
     public bool IsGrounded()
     {
-        if (Physics.BoxCast(transform.position, boxSize, -transform.up, Quaternion.identity, castDistance, shadowMask))
+        if (Physics.BoxCast(transform.position, boxSize, -transform.up, out RaycastHit hitInfo, Quaternion.identity, castDistance, shadowMask))
         {
-            return true;
+            if (groundedObject == hitInfo.transform.gameObject)
+            {
+                return true;
+            }
+            
+            else
+            {
+                groundedObject = hitInfo.transform.gameObject;
+                groundedObject.transform.hasChanged = false;
+                return true;
+            }
         }
+
         else
         {
+
             return false;
         }
     }
@@ -131,4 +150,6 @@ public class PlayerControl : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxSize);
     }
+
+    
 }

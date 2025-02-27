@@ -75,14 +75,15 @@ public class ShadowManager : MonoBehaviour
         }
     }
 
-    //void MoveToCenter(GameObject shadow)
-    //{
-    //    Vector3 center = shadow.GetComponent<Shadow>().FindCenter() + new Vector3(0,0.7f,0);
-    //    selectedShadow = null;
+    public void MoveToCenter(GameObject shadow)
+    {
+        Vector3 center = shadow.GetComponent<Shadow>().FindCenter() + new Vector3(0,0.7f,0);
 
-    //    destination = center;
-    //    isMoving = true;
-    //}
+        destination = center;
+        isMoving = true;
+
+        StartCoroutine(ShadowMove());
+    }
 
     public void MoveToSpot(Vector3 point)
     {
@@ -98,7 +99,7 @@ public class ShadowManager : MonoBehaviour
         characterAnim.SetBool("isTeleporting", true);
         PlayerControl.instance.isTeleporting = true;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         DG.Tweening.Sequence mySequence = DOTween.Sequence();
         charRenderer.enabled = false;
